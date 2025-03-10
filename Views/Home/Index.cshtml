@@ -1,0 +1,53 @@
+﻿@model IEnumerable<BookStoreManagement.Models.Book>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1 class="text-center my-4">Books</h1>
+
+@if (User.IsInRole("Admin"))
+{
+    <div class="d-flex justify-content-end mb-3">
+        <a asp-action="Create" class="btn btn-success btn-lg shadow-sm px-4">
+            <i class="fas fa-plus-circle"></i> Create New Book
+        </a>
+    </div>
+}
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Title</h5>
+                    <p class="card-text"><strong>Author:</strong> @item.Author</p>
+                    <p class="card-text">@item.Description</p>
+                    <p class="card-text text-primary"><strong>Price:</strong> $@item.Price</p>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">
+                        <i class="fas fa-eye"></i> View Details
+                    </a>
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">
+                            <i class="fas fa-edit"></i> Edit
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
+                            <i class="fas fa-trash"></i> Delete
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Cart" asp-action="Add" asp-route-bookId="@item.Id" class="btn btn-success">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
