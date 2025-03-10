@@ -1,0 +1,46 @@
+# BookStoreManagement
+
+## Overview
+BookStoreManagement is an ASP.NET MVC application designed to manage book inventory, sales, and customer orders efficiently.
+
+## Prerequisites
+Ensure you have the following installed before running the application:
+- [.NET SDK](https://dotnet.microsoft.com/en-us/download)
+- [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) or [PostgreSQL](https://www.postgresql.org/download/)
+- [Git](https://git-scm.com/downloads)
+- [Visual Studio](https://visualstudio.microsoft.com/) or [VS Code](https://code.visualstudio.com/)
+
+## Getting Started
+
+### Clone the Repository
+```sh
+git clone https://github.com/younus8imran/BookStoreManagement.git
+cd BookStoreManagement
+```
+
+### Configure the Application
+1. **Set up the database connection:**
+   - Update `appsettings.json` or `appsettings.Development.json` with your database connection string.
+
+2. **Apply Database Migrations**
+   ```sh
+   dotnet ef database update
+   ```
+
+### Running the Application
+
+#### Using the Command Line
+```sh
+dotnet run
+```
+
+#### Using Visual Studio
+1. Open `BookStoreManagement.sln` in Visual Studio.
+2. Set `BookStoreManagement` as the startup project.
+3. Press `F5` to run the application.
+
+### Accessing the Application
+Once running, open your browser and navigate to:
+```
+https://localhost:7150/
+```
